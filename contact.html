@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            background-color: #28a745;
+            color: #fffdd0;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        } /* Thanh menu bên phải */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 250px;
+    background-color: #28a745;
+    padding: 20px;
+    height: calc(100% - 100px); /* Giới hạn chiều cao để có thể cuộn */
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1000;
+    transition: width 0.3s ease;
+    overflow-y: auto; /* Cho phép cuộn theo chiều dọc */
+}
+
+/* Khi thanh menu thu nhỏ lại */
+.sidebar.collapsed {
+    width: 50px;
+}
+
+/* Các mục trong thanh menu */
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hiệu ứng hover cho các mục menu */
+.sidebar a:hover {
+    background-color: #218838;
+}
+
+
+        .sidebar .toggle-btn {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .toggle-btn .bar1, .sidebar .toggle-btn .bar2, .sidebar .toggle-btn .bar3 {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 4px 0;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        .sidebar.collapsed {
+            width: 50px;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .sidebar.collapsed .toggle-btn .bar2 {
+            opacity: 0;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .locations {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                top: 0;
+                position: fixed;
+            }
+
+            .sidebar.collapsed {
+                width: 50px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+            }
+
+            .toggle-btn {
+                font-size: 25px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Liên Hệ Với Chúng Tôi</h1>
+    </header>
+
+    <div class="contact-form">
+        <h2>Gửi Thông Tin Liên Hệ</h2>
+        <form action="send_email.php" method="POST">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name" required> <!-- Thêm required ở đây -->
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required> <!-- Thêm required ở đây -->
+    
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone"> <!-- Không thêm required ở đây -->
+    
+            <label for="message">Tin nhắn:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+    
+            <button type="submit">Gửi</button>
+        </form>
+    </div>
+    
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </button>
+        <a href="index.html">Trang Chủ</a>
+        <a href="dulichlanhuong.html">Khu du lịch Lan Vương</a> 
+        
+        <a href="dulichphuankhang.html">Khu du lịch Phú An Khang</a>
+        <a href="baotangbentre.html">Bảo tàng Bến Tre</a>
+        <a href="conphung.html">Cồn Phụng</a>
+        <a href="ditichndc.html">Khu di tích lăng mộ Nguyễn Đình Chiểu</a>
+        <a href="chuabachvan.html">Chùa Bạch Vân</a>
+        <a href="dinhphutu.html">Đình Phú Tự</a>
+        <a href="sanchimvamho.html">Sân chim Vàm Hồ</a>
+        <a href="chuavanphuoc.html">Chùa Vạn Phước</a>
+        <a href="about.html">Giới Thiệu</a>
+        <a href="contact.html">Liên Hệ</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Khám Phá Bến Tre</p>
+    </footer>
+    <script>
+        // Kích hoạt hiệu ứng AOS
+        AOS.init();
+
+        // Hàm để thu gọn hoặc mở rộng thanh menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>

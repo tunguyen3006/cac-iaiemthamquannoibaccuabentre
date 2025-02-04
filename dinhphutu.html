@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đình Phú Tự</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+           /* Thêm hiệu ứng "float in" cho các phần tử */
+    @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px); /* Di chuyển từ dưới lên */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Áp dụng hiệu ứng cho các phần tử */
+        header, .intro, .price-list, .combo, .activities, .map-container iframe {
+            animation: floatIn 1s ease-out forwards; /* Đặt hiệu ứng với thời gian 1 giây */
+            opacity: 0;
+        }
+
+        header {
+            animation-delay: 0s; /* Hiệu ứng cho header */
+        }
+
+        .intro {
+            animation-delay: 0.2s; /* Hiệu ứng cho phần giới thiệu */
+        }
+
+        .price-list {
+            animation-delay: 0.4s; /* Hiệu ứng cho bảng giá */
+        }
+
+        .combo {
+            animation-delay: 0.6s; /* Hiệu ứng cho combo */
+        }
+
+        .activities {
+            animation-delay: 0.8s; /* Hiệu ứng cho các hoạt động */
+        }
+
+        .map-container iframe {
+            animation-delay: 1s; /* Hiệu ứng cho bản đồ */
+        }
+
+        /* Hiệu ứng cho sidebar khi mở */
+        .sidebar {
+            opacity: 0;
+            animation: floatIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Các phần tử khi sidebar được thu gọn không áp dụng hiệu ứng */
+        .sidebar.collapsed {
+            animation: none;
+            opacity: 1;
+        }
+
+       /* Toàn bộ body */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    min-height: 100vh; /* Chiều cao tối thiểu bằng chiều cao màn hình */
+    flex-direction: column;
+}
+
+/* Phần header */
+header {
+    background-color: #28a745;
+    color: #fffdd0;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px; /* Căn giữa với chiều rộng tối đa */
+    margin-bottom: 20px;
+}
+
+/* Phần content */
+.content {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+    padding: 0 20px;
+    text-align: center; /* Căn giữa văn bản */
+}
+
+/* Phần giới thiệu */
+.intro {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px 0; /* Khoảng cách trên dưới */
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Căn giữa ảnh */
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bo góc cho ảnh */
+    margin-bottom: 20px; /* Khoảng cách dưới ảnh */
+}
+
+/* Phần bản đồ */
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Các phần tử trong sidebar */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 250px;
+    background-color: #28a745;
+    padding: 20px;
+    height: calc(100% - 100px);
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1000;
+    transition: width 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Căn giữa phần sidebar khi thu nhỏ */
+.sidebar.collapsed {
+    width: 50px;
+}
+
+.sidebar .toggle-btn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thêm hiệu ứng cho sidebar */
+.sidebar .toggle-btn .bar1, .sidebar .toggle-btn .bar2, .sidebar .toggle-btn .bar3 {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px 0;
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* Điều chỉnh cho màn hình nhỏ */
+@media screen and (max-width: 768px) {
+    .locations {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .location {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        top: 0;
+        position: fixed;
+    }
+
+    .sidebar.collapsed {
+        width: 50px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+    }
+
+    .toggle-btn {
+        font-size: 25px;
+        left: 10px;
+    }
+}
+
+
+        /* Bản đồ */
+        .map {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            text-align: center; /* Căn giữa bản đồ */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Đình Phú Tự</h1>
+    </header>
+
+    <div class="content">
+        <img src="photo/dinhphutuTrang.jpg" alt="Đình Phú Tự" height="500" width="880">
+        <p>Đình Phú Tự thờ Thành Hoàng Bổn Cảnh được phong sắc vào năm 1910 (Khải Định nhị niên). Cho đến nay, vẫn chưa có tư liệu nào xác định thời gian xây dựng ngôi đình nhưng theo lời các cao niên thì đình được xây dựng trước năm 1904 rất lâu. </p>
+        <p>Địa Chỉ: tại ấp Phú Hào, Phú Hưng, thành phố Bến Tre, tỉnh Bến Tre.</p>
+        <p>Tiền thân của đình Phú Tự là một ngôi miếu nhỏ được những lưu dân mới đến khai cơ lập địa xây dựng để làm nơi thờ cúng các bậc tiền hiền, cầu cho mưa thuận gió hòa.</p>
+        <p>Về sau, Chánh bái làng Phú Tự – ông Trần Văn Cương – đã hiến đất và đứng ra xây dựng ngôi đình làng, thay cho ngôi miếu cũ. </p>
+        <p>Về mặt kiến trúc: Đình bao gồm các hạng mục công trình như bình phong, đình chính và các miễu thờ. Nội thất đình Phú Tự bố trí theo chiều sâu, liên kết giữa bái đường và chánh điện là các hàng án thờ cao lớn, bao lam trên các khoảng gian cột, hoành phi, long trụ, liễn đối, chạm trổ cực kỳ tinh tế. Các đề tài được sử dụng chủ yếu là tứ linh, tứ thời, hoa lá, chim thú, ... bằng thủ pháp chạm lọng, chạm âm, chạm dương, tất cả đều được sơn son thếp vàng lộng lẫy. Ngoài ra còn rất nhiều hiện vật cổ khác có giá trị, được nhiều thế hệ giữ gìn chu đáo…</p>
+        
+    </div>
+   
+    <section class="price-list">
+        <h2 class="section-title">Lễ hội</h2>
+        <p>Hằng năm tại đình Phú Tự có 4 lệ cúng chính gồm</p>
+        <ul>
+            <li>Lễ Kỳ Yên vào ngày 16, 17 tháng 3</li>
+            <li>lễ Hạ Điền vào ngày 10 tháng 5</li>
+            <li>lễ Thượng Điền vào ngày 10 tháng 10</li>
+           
+            <li>lễ Chạp Miễu (Lạp Miếu) vào ngày 16,17 tháng 12 với các nghi thức truyền thống như: Thỉnh Sắc Thần, Tế Tiền Hiền - Hậu Hiền…</li>
+            
+            
+        </ul>
+    </section>
+    <section class="map">
+        <h2 class="section-title">Bản Đồ Đường Đi</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125681.84145512673!2d106.47973966835944!3d10.13525580237495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa9a0dcf9a32b%3A0x6208a36b75e0051e!2zxJDDrG5oIFBow7ogVOG7sQ!5e0!3m2!1svi!2s!4v1738486006312!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </button>
+        <a href="index.html">Trang Chủ</a>
+        <a href="dulichlanhuong.html">Khu du lịch Lan Vương</a> 
+        
+        <a href="dulichphuankhang.html">Khu du lịch Phú An Khang</a>
+        <a href="baotangbentre.html">Bảo tàng Bến Tre</a>
+        <a href="conphung.html">Cồn Phụng</a>
+        <a href="ditichndc.html">Khu di tích lăng mộ Nguyễn Đình Chiểu</a>
+        <a href="chuabachvan.html">Chùa Bạch Vân</a>
+        <a href="dinhphutu.html">Đình Phú Tự</a>
+        <a href="sanchimvamho.html">Sân chim Vàm Hồ</a>
+        <a href="chuavanphuoc.html">Chùa Vạn Phước</a>
+        <a href="about.html">Giới Thiệu</a>
+        <a href="contact.html">Liên Hệ</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Khám Phá Bến Tre</p>
+    </footer>
+    <script>
+        // Kích hoạt hiệu ứng AOS
+        AOS.init();
+
+        // Hàm để thu gọn hoặc mở rộng thanh menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+
+</body>
+</html>

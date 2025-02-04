@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chùa Bạch Vân</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+            /* Thêm hiệu ứng "float in" cho các phần tử */
+    @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px); /* Di chuyển từ dưới lên */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Áp dụng hiệu ứng cho các phần tử */
+        header, .intro, .price-list, .combo, .activities, .map-container iframe {
+            animation: floatIn 1s ease-out forwards; /* Đặt hiệu ứng với thời gian 1 giây */
+            opacity: 0;
+        }
+
+      /* Đảm bảo phần giới thiệu được căn giữa */
+.intro {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: center; /* Căn giữa văn bản */
+    margin: 20px auto; /* Căn giữa phần giới thiệu */
+    max-width: 900px; /* Giới hạn chiều rộng để dễ nhìn hơn */
+    padding: 0 15px; /* Thêm padding để tránh văn bản bị dính vào biên */
+    box-sizing: border-box; /* Đảm bảo padding không làm lệch kích thước */
+}
+
+/* Căn giữa hình ảnh trong phần giới thiệu */
+.intro img {
+    width: 100%;
+    max-width: 800px; /* Giới hạn chiều rộng hình ảnh */
+    height: auto;
+    display: block; /* Đảm bảo hình ảnh được hiển thị như một khối */
+    margin: 0 auto 20px auto; /* Căn giữa và thêm khoảng cách dưới hình ảnh */
+}
+
+
+
+header {
+    background-color: #28a745;
+    color: #fffdd0;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa */
+}
+
+        .price-list {
+            animation-delay: 0.4s; /* Hiệu ứng cho bảng giá */
+        }
+
+        .combo {
+            animation-delay: 0.6s; /* Hiệu ứng cho combo */
+        }
+
+        .activities {
+            animation-delay: 0.8s; /* Hiệu ứng cho các hoạt động */
+        }
+
+        .map-container iframe {
+            animation-delay: 1s; /* Hiệu ứng cho bản đồ */
+        }
+
+        /* Hiệu ứng cho sidebar khi mở */
+        .sidebar {
+            opacity: 0;
+            animation: floatIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Các phần tử khi sidebar được thu gọn không áp dụng hiệu ứng */
+        .sidebar.collapsed {
+            animation: none;
+            opacity: 1;
+        }
+
+        /* CSS cho trang du lịch Lan Vương */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #28a745;
+            color: #fffdd0;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px; /* Căn giữa với chiều rộng tối đa */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .content {
+            margin: 0 20px;
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Căn giữa nội dung */
+        }
+
+        .main-content {
+            margin-bottom: 40px;
+            text-align: center; /* Căn giữa văn bản */
+        }
+
+        /* Phần giới thiệu */
+        .intro, .price-list, .combo, .activities {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center; /* Căn giữa văn bản */
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            color: #28a745;
+        }
+
+        .price-list ul, .activities ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .price-list li, .activities li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 800px; /* Giới hạn chiều rộng của danh sách */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .price-list li span {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        /* Thanh menu bên phải */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 250px;
+    background-color: #28a745;
+    padding: 20px;
+    height: calc(100% - 100px); /* Giới hạn chiều cao để có thể cuộn */
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1000;
+    transition: width 0.3s ease;
+    overflow-y: auto; /* Cho phép cuộn theo chiều dọc */
+}
+
+/* Khi thanh menu thu nhỏ lại */
+.sidebar.collapsed {
+    width: 50px;
+}
+
+/* Các mục trong thanh menu */
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hiệu ứng hover cho các mục menu */
+.sidebar a:hover {
+    background-color: #218838;
+}
+
+
+        .sidebar .toggle-btn {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .toggle-btn .bar1, .sidebar .toggle-btn .bar2, .sidebar .toggle-btn .bar3 {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 4px 0;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        .sidebar.collapsed {
+            width: 50px;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .sidebar.collapsed .toggle-btn .bar2 {
+            opacity: 0;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .locations {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                top: 0;
+                position: fixed;
+            }
+
+            .sidebar.collapsed {
+                width: 50px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+            }
+
+            .toggle-btn {
+                font-size: 25px;
+                left: 10px;
+            }
+        }
+
+        /* Bản đồ */
+        .map {
+    width: 100%;
+    max-width: 800px; /* Giới hạn chiều rộng của bản đồ */
+    margin: 20px auto; /* Căn giữa và thêm khoảng cách trên và dưới */
+    text-align: center;
+}
+
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Chùa Bạch Vân</h1>
+    </header>
+
+    <div class="intro">
+        <h2 class="section-title">Giới thiệu</h2>
+        <p>Được xây dựng từ năm 1954, Bạch Vân ni tự đầu tiên chỉ là một ngôi chùa bằng gỗ, lợp mái lá đơn sơ. Đến năm 1962, chùa mới được xây dựng khang trang hơn. Ni cô trụ trì Bạch Vân ni tự khi đó là Ni trưởng Thích Nữ Diệu Minh.</p>
+        <ul>
+            <li><span>Địa Chỉ:</span>  136 Đoàn Hoàng Minh, phường 6, thành phố Bến Tre.</li>
+            <li><span>Lịch sử:</span> Bạch Vân ni tự từ khi được thành lập đến nay đã trở thành nơi sinh hoạt và tu tập của giới ni cô tỉnh Bến Tre.</li>
+            <li><span>Sự kiện nổi bật:</span> Năm 1959, chùa đã mở lớp Sơ đẳng Phật học cho 36 ni sư tham gia.</li>
+            <li><span>Trung tâm giáo dục:</span> Năm 1992, chùa Bạch Vân được chọn làm nơi đặt trường Trung cấp Phật học của Tỉnh hội Phật giáo Bến Tre.</li>
+            <li><span>Trùng tu:</span> Năm 2010, chùa tiến hành đại trùng tu và sửa chữa lại các công trình trong chùa.</li>
+            <li><span>Hòa bình thế giới:</span> Năm 2017, chùa lần đầu tiên cung nghinh tượng Phật Ngọc hòa bình thế giới.</li>
+        </ul>
+    </div>
+    
+            
+            
+     
+    <section class="map">
+        <h2 class="section-title">Bản Đồ Đường Đi</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.2286361460838!2d106.36129317573203!3d10.243135368802433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa88a2082372d%3A0xf13dab502fae5412!2zQ2jDuWEgQuG6oWNoIFbDom4!5e0!3m2!1svi!2s!4v1738485869943!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </button>
+        <a href="index.html">Trang Chủ</a>
+        <a href="dulichlanhuong.html">Khu du lịch Lan Vương</a> 
+        <a href="dulichphuankhang.html">Khu du lịch Phú An Khang</a>
+        <a href="baotangbentre.html">Bảo tàng Bến Tre</a>
+        <a href="conphung.html">Cồn Phụng</a>
+        <a href="ditichndc.html">Khu di tích lăng mộ Nguyễn Đình Chiểu</a>
+        <a href="chuabachvan.html">Chùa Bạch Vân</a>
+        <a href="dinhphutu.html">Đình Phú Tự</a>
+        <a href="sanchimvamho.html">Sân chim Vàm Hồ</a>
+        <a href="chuavanphuoc.html">Chùa Vạn Phước</a>
+        <a href="about.html">Giới Thiệu</a>
+        <a href="contact.html">Liên Hệ</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Khám Phá Bến Tre</p>
+    </footer>
+    <script>
+        // Kích hoạt hiệu ứng AOS
+        AOS.init();
+
+        // Hàm để thu gọn hoặc mở rộng thanh menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+
+</body>
+</html>

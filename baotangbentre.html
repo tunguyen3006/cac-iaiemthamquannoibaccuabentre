@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo tàng Bến Tre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Thêm hiệu ứng "float in" cho các phần tử */
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px); /* Di chuyển từ dưới lên */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Áp dụng hiệu ứng cho các phần tử */
+        header, .intro, .price-list, .combo, .activities, .map-container iframe {
+            animation: floatIn 1s ease-out forwards; /* Đặt hiệu ứng với thời gian 1 giây */
+            opacity: 0;
+        }
+
+        header {
+            animation-delay: 0s; /* Hiệu ứng cho header */
+        }
+
+        .intro {
+            animation-delay: 0.2s; /* Hiệu ứng cho phần giới thiệu */
+        }
+
+        .price-list {
+            animation-delay: 0.4s; /* Hiệu ứng cho bảng giá */
+        }
+
+        .combo {
+            animation-delay: 0.6s; /* Hiệu ứng cho combo */
+        }
+
+        .activities {
+            animation-delay: 0.8s; /* Hiệu ứng cho các hoạt động */
+        }
+        .map {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 100%;
+    padding: 20px 0; /* Khoảng cách trên dưới cho phần bản đồ */
+}
+
+.map-container {
+    width: 90%; /* Chiếm 90% chiều rộng của màn hình */
+    max-width: 1000px; /* Giới hạn chiều rộng tối đa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container iframe {
+    width: 100%; /* Bản đồ chiếm 100% chiều rộng của khung chứa */
+    height: 450px; /* Chiều cao cố định cho bản đồ */
+}
+
+
+        
+
+
+
+        /* Hiệu ứng cho sidebar khi mở */
+        .sidebar {
+            opacity: 0;
+            animation: floatIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Các phần tử khi sidebar được thu gọn không áp dụng hiệu ứng */
+        .sidebar.collapsed {
+            animation: none;
+            opacity: 1;
+        }
+
+        /* CSS cho trang du lịch Lan Vương */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Căn giữa phần nội dung chính */
+        .content {
+            margin: 0 auto;
+            max-width: 1200px; /* Căn giữa nội dung với chiều rộng tối đa */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Căn giữa nội dung */
+            text-align: center;
+        }
+
+        header {
+            background-color: #28a745;
+            color: #fffdd0;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px; /* Căn giữa với chiều rộng tối đa */
+            margin: 0 auto 20px auto; /* Căn giữa */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .main-content {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Phần giới thiệu */
+        .intro, .price-list, .combo, .activities {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            color: #28a745;
+        }
+
+        .price-list ul, .activities ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .price-list li, .activities li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 800px; /* Giới hạn chiều rộng của danh sách */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .price-list li span {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        /* Thanh menu bên phải */
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 100px;
+            width: 250px;
+            background-color: #28a745;
+            padding: 20px;
+            height: calc(100% - 100px);
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1000;
+            transition: width 0.3s ease;
+            overflow-y: auto;
+        }
+
+        /* Khi thanh menu thu nhỏ lại */
+        .sidebar.collapsed {
+            width: 50px;
+        }
+
+        /* Các mục trong thanh menu */
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Hiệu ứng hover cho các mục menu */
+        .sidebar a:hover {
+            background-color: #218838;
+        }
+
+        .sidebar .toggle-btn {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .toggle-btn .bar1,
+        .sidebar .toggle-btn .bar2,
+        .sidebar .toggle-btn .bar3 {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 4px 0;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        .sidebar.collapsed {
+            width: 50px;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .sidebar.collapsed .toggle-btn .bar2 {
+            opacity: 0;
+        }
+
+        .sidebar.collapsed .toggle-btn .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .locations {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                top: 0;
+                position: fixed;
+            }
+
+            .sidebar.collapsed {
+                width: 50px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+            }
+
+            .toggle-btn {
+                font-size: 25px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bảo Tàng Bến Tre</h1>
+    </header>
+
+    <div class="content">
+        <img src="photo/baotangbentreTC.jpeg" alt="Bảo tàng Bến Tre">
+        <p><strong>Bảo tàng Bến Tre</strong> là nơi lưu giữ những hiện vật quan trọng về lịch sử, văn hóa của tỉnh Bến Tre. Du khách có thể tìm hiểu về các di sản văn hóa đặc sắc và sự phát triển của Bến Tre qua các thời kỳ.</p>
+        <p>Địa chỉ: Số 100, Đường Nguyễn Thị Định, Thành phố Bến Tre.</p>
+    </div>
+
+    <section class="map">
+        <h2 class="section-title">Bản Đồ Đường Đi</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.330019995154!2d106.37158217573194!3d10.23494476894653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa85c3fc00d0f%3A0x1107cf4ce5f17a01!2zQuG6o28gVGHMgG5nIFRpzIluaCBC4bq_biBUcmU!5e0!3m2!1svi!2s!4v1738485110755!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    
+    
+    
+
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </button>
+        <a href="index.html">Trang Chủ</a>
+        <a href="dulichlanhuong.html">Khu du lịch Lan Vương</a> 
+        <a href="dulichphuankhang.html">Khu du lịch Phú An Khang</a>
+        <a href="baotangbentre.html">Bảo tàng Bến Tre</a>
+        <a href="conphung.html">Cồn Phụng</a>
+        <a href="ditichndc.html">Khu di tích lăng mộ Nguyễn Đình Chiểu</a>
+        <a href="chuabachvan.html">Chùa Bạch Vân</a>
+        <a href="dinhphutu.html">Đình Phú Tự</a>
+        <a href="sanchimvamho.html">Sân chim Vàm Hồ</a>
+        <a href="chuavanphuoc.html">Chùa Vạn Phước</a>
+        <a href="about.html">Giới Thiệu</a>
+        <a href="contact.html">Liên Hệ</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Khám Phá Bến Tre</p>
+    </footer>
+
+    <script>
+        // Hàm để thu gọn hoặc mở rộng thanh menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+
+</body>
+</html>
+
